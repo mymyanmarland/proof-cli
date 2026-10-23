@@ -1,0 +1,7 @@
+{
+  "name": "broken-node-fixture",
+  "private": true,
+  "scripts": {
+    "build": "node -e \"console.error('Error: deliberate build failure in fixture'); process.exit(1)\""
+  }
+}
