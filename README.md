@@ -1,6 +1,18 @@
-# proof-cli
+<div align="center">
 
-**Make AI agents prove their work before they say "done".**
+<img src="assets/banner.svg" alt="proof-cli — make AI agents prove their work before they say done" width="100%"/>
+
+<img src="assets/typing.svg" alt="Agents say done. Proof makes them prove it." width="760"/>
+
+<br/>
+
+[![Python](https://img.shields.io/badge/python-3.x-39c2ff?logo=python&logoColor=white&style=for-the-badge)](proof.py)
+[![Dependencies](https://img.shields.io/badge/core%20dependencies-zero-2ee6a8?style=for-the-badge)](#-guarantees)
+[![MCP](https://img.shields.io/badge/MCP-ready-39c2ff?style=for-the-badge)](#-use-it-from-an-agent)
+[![Tests](https://img.shields.io/badge/tests-13%2F13%20passing-22c55e?style=for-the-badge)](#-tests)
+[![License](https://img.shields.io/badge/license-MIT-yellow?style=for-the-badge)](LICENSE)
+
+</div>
 
 AI coding agents finish a task and announce success — while the build
 is broken, a test fails, or the page is a white screen. The human
@@ -12,12 +24,9 @@ writes **one compact PASS/FAIL report** (`proof-report.md`) that the
 agent can read, fix from, and re-run — until it can honestly say
 "done", receipt attached.
 
-![Python](https://img.shields.io/badge/python-3.x-39c2ff?logo=python&logoColor=white)
-![Dependencies](https://img.shields.io/badge/core%20dependencies-zero-2ee6a8)
-![MCP](https://img.shields.io/badge/MCP-ready-39c2ff)
-![License](https://img.shields.io/badge/license-MIT-yellow)
+<img src="assets/divider.svg" width="100%"/>
 
-## Guarantees
+## 🛡️ Guarantees
 
 - **Missing is SKIP, never FAIL.** No `test` script? That check does
   not exist — it is not a failure.
@@ -28,7 +37,9 @@ agent can read, fix from, and re-run — until it can honestly say
 - **Nothing ran = not proof.** A project where zero checks executed
   gets a FAIL verdict, not a free pass.
 
-## Quick start
+<img src="assets/divider.svg" width="100%"/>
+
+## 🚀 Quick start
 
 ```bash
 python3 proof.py check ./my-project                  # → ./my-project/proof-report.md
@@ -37,7 +48,15 @@ python3 proof.py check ./my-project --url http://localhost:3000
 echo $?   # 0 = PASS, 1 = FAIL
 ```
 
-## What it checks
+<img src="assets/divider.svg" width="100%"/>
+
+## ⚙️ How it works
+
+<div align="center">
+<img src="assets/flow.svg" alt="Detect, run checks, web check, report" width="100%"/>
+</div>
+
+## 🔍 What it checks
 
 | Check | When | Notes |
 |---|---|---|
@@ -50,7 +69,7 @@ Failures are **deduplicated**: the same error line repeated 40 times
 appears once, as `×40`, so the report stays short enough for an agent
 to read in one pass — and ends with a **"Fix these first"** list.
 
-## Example report (excerpt)
+## 📋 Example report (excerpt)
 
 ```markdown
 ## Verdict: FAIL
@@ -64,7 +83,9 @@ to read in one pass — and ends with a **"Fix these first"** list.
 1. **npm run build**: Error: deliberate build failure in fixture
 ```
 
-## Use it from an agent
+<img src="assets/divider.svg" width="100%"/>
+
+## 🤖 Use it from an agent
 
 **MCP (stdio)** — one tool, `proof_check` (`project_dir`, optional `url`):
 
@@ -79,7 +100,9 @@ python3 proof.py mcp
 **Skill** — see [SKILL.md](SKILL.md): *never report done without a
 proof check PASS; if FAIL, fix and re-run.*
 
-## Tests
+<img src="assets/divider.svg" width="100%"/>
+
+## 🧪 Tests
 
 ```bash
 python3 -m unittest   # unit tests + the planted-error acceptance tests
@@ -90,12 +113,20 @@ a Node project whose build deliberately fails (must FAIL, naming the
 build), a static page with an empty body (must FAIL, white screen
 detected), and a healthy static site (must PASS).
 
-## Roadmap
+Real-project evidence: [`real-project-report-keyscope.md`](real-project-report-keyscope.md) —
+proof-cli run against the KeyScope project, verdict PASS (screenshots
+SKIP, Playwright not installed — reported honestly, as designed).
+
+## 🗺️ Roadmap
 
 - v0.2: overflow/layout heuristics from screenshots, `--json` output,
   git-diff mode (check only what changed)
 - Later: GitHub Action wrapper, per-agent badges, flaky-check history
 
-## License
+## 📄 License
 
 MIT — see [LICENSE](LICENSE).
+
+<div align="center">
+<img src="assets/footer.svg" alt="proof-cli — prove it before you say done" width="100%"/>
+</div>
